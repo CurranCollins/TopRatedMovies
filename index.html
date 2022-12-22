@@ -1,22 +1,83 @@
+<!--
+  Make a header
+  Create a box with search field
+  add foundation styling
+  add classes and id's for CSS Styling
+-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Document</title>
     <!-- Compressed CSS -->
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css"
       crossorigin="anonymous"
     />
 
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Movie Finder by Year</title>
+
     <!-- Compressed JavaScript -->
     <script
       src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js"
       crossorigin="anonymous"
     ></script>
+
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1>Movie Finder by Year</h1>
+    </header>
+
+    <main>
+      <div class="row">
+        <div class="columns">
+          <div
+            class="card"
+            style="
+              width: 300px;
+              padding: 20px;
+              margin: 20px;
+              background-color: rgb(89, 129, 211);
+            "
+          >
+            <h3 class="card-divider background-color: light-">Enter a Year</h3>
+            <div>
+              <input />
+              <button
+                class="button float-right"
+                style="background-color: rgb(89, 129, 211)"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <h2>Your Search Results:</h2>
+          </div>
+          <div class=""></div>
+        </div>
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+
+  <footer>
+    <h2>
+      Created by Gene Kim, Johann Kubeja, and Curran Collins for UW Fullstack
+      Bootcamp.
+    </h2>
+  </footer>
 </html>
