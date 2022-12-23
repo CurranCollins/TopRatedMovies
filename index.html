@@ -20,46 +20,40 @@
     <title>Find similar Movies</title>
   </head>
   <body>
-    <header>
-      <h1>Find Similar Movies</h1>
+    <header
+      class="grid-x"
+      style="justify-content: center; padding: 20px; margin-bottom: 50px"
+    >
+      <h1 class="column">Find Similar Movies</h1>
     </header>
 
     <main>
-      <div class="row">
-        <div class="columns">
-          <div
-            class="card"
-            style="
-              width: 300px;
-              padding: 20px;
-              margin: 20px;
-              background-color: rgb(89, 129, 211);
-            "
-          >
-            <h3 class="card-divider" style="background-color: green">
-              Enter a Movie Title
-            </h3>
-            <div>
-              <input id="movie-title" />
-              <button
-                id="search-button"
-                class="button float-right"
-                style="background-color: rgb(89, 129, 211)"
-              >
-                Search
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <h2>Your Search Results:</h2>
-          </div>
-          <!-- Empty divs for movie searched and similar results-->
-          <div><img src="" id="movie-poster" /></div>
-          <div class="similar-movies"></div>
+      <div class="grid-x" style="justify-content: center">
+        <h3>Enter a Movie Title</h3>
+        <div class="column">
+          <input
+            style="width: 600px; height: 40px; justify-content: center"
+            id="movie-title"
+          />
+          <button id="search-button" class="button float-right">Search</button>
         </div>
       </div>
+
+      <div>
+        <h2>Your Search Results:</h2>
+      </div>
+      <!-- Empty divs for movie searched and similar results-->
+      <div><img src="" id="movie-poster" /></div>
+      <div></div>
+      <div class="similar-movies"></div>
     </main>
+
+    <footer>
+      <!--<h2>
+        Created by Gene Kim, Johann Kubeja, and Curran Collins for UW Fullstack
+        Bootcamp.
+      </h2>-->
+    </footer>
 
     <script
       src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -73,11 +67,4 @@
 
     <script src="./assets/js/script.js"></script>
   </body>
-
-  <footer>
-    <h2>
-      Created by Gene Kim, Johann Kubeja, and Curran Collins for UW Fullstack
-      Bootcamp.
-    </h2>
-  </footer>
 </html>

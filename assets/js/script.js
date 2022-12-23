@@ -10,8 +10,9 @@ $("#search-button").click(function () {
     response
   ) {
     console.log(response);
-    $("#movie-Poster").attr("src", response.Poster);
+    $("#movie-poster").attr("src", response.Poster);
     imdbId = response.imdbID;
+
     $.ajax(
       `https://api.themoviedb.org/3/movie/${imdbId}/similar?api_key=43ba0a31020fe2244998abeaf52535a4&language=en-US&page=1`
     ).then(function (similarMovies) {
