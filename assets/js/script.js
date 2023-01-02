@@ -1,9 +1,12 @@
 let imdbId = "";
 let posterUrl = "http://image.tmdb.org/t/p/w185";
-let posterPath = [];
+let searchHistory = [];
 
 $("#search-button").click(function () {
   let title = $("#movie-title").val();
+  searchHistory.push(title);
+  localStorage.setItem("search history", searchHistory);
+  console.log(localStorage);
   title = title.split(" ").join("+");
   console.log(title);
   $.ajax(`http://www.omdbapi.com/?apikey=beff67b&t=${title}`).then(function (response) {
@@ -18,12 +21,32 @@ $("#search-button").click(function () {
       $('.similar-movies').empty();
 
       for (var i = 0; i < similarMovies.results.length; i++) {
+        
         var fullUrl = posterUrl + similarMovies.results[i].poster_path;
         //console.log(fullUrl);
+
+        $('.similar-movies').append(`
+        <div class='small reveal' id='info-modal-${i}' data-reveal> 
+          <h1>${similarMovies.results[i].title}</h1> 
+          <p>${similarMovies.results[i].overview}</p> 
+          <button class="close-button" data-close aria-label="Close modal" type="button"> <span aria-hidden="true">&times;</span> </button>
+        </div>`);
+
+        //$(`#info-modal-${i}`).append(`<h1>${similarMovies.results[i].title}</h1>`);
         
-        $('.similar-movies').append(`<img id='similar-${i}' src='${fullUrl}'/>`);
+        //$(`#info-modal-${i}`).append(`<p>${similarMovies.results[i].overview}</p>`);
+
+        //$(`#info-modal-${i}`).append(`<button class="close-button" data-close aria-label="Close modal" type="button"> <span aria-hidden="true">&times;</span> </button>`);
+        
+        $('.similar-movies').append(`<button class=button data-open='info-modal-${i}'><img src='${fullUrl}'/></button>`);
+
+        
       }
+
+      
     });
   });
 });
+
+
 // http://www.omdbapi.com/?i=tt3896198&apikey=beff67b
