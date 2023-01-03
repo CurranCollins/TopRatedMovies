@@ -13,14 +13,27 @@ $("#search-button").click(function () {
   title = title.split(" ").join("+");
   console.log(title);
 
-  $.ajax(`http://www.omdbapi.com/?apikey=beff67b&t=${title}`).then(function (response) {
+  $("#saved-searches").empty();
+
+  for (let i = 0; i < 8; i++) {
+    if (searchHistory[i] != undefined) {
+      $("#saved-searches").append(
+        `<button class="button history-btn">${searchHistory[i]}</button>`
+      );
+    }
+  }
+
+  $.ajax(`http://www.omdbapi.com/?apikey=beff67b&t=${title}`).then(function (
+    response
+  ) {
     if (response.Response == "False") {
-      $("#searched-header").text("Movie not found! Please enter correct title.")
+      $("#searched-header").text(
+        "Movie not found! Please enter correct title."
+      );
       $("#similar-header").empty();
       $("#searched-description").empty();
-      $('.similar-movies').empty();
+      $(".similar-movies").empty();
       $("#movie-poster").attr("src", "");
-
     } else {
       // console.log(response);
       $("#movie-poster").attr("src", response.Poster);
@@ -35,12 +48,14 @@ $("#search-button").click(function () {
       <p>Release Date: ${response.Released}</p>
       <p>Plot: ${response.Plot}</p>
       `);
+    }
 
-      $.ajax(`https://api.themoviedb.org/3/movie/${imdbId}/similar?api_key=43ba0a31020fe2244998abeaf52535a4&language=en-US&page=1`).then(function (similarMovies) {
+    $.ajax(
+      `https://api.themoviedb.org/3/movie/${imdbId}/similar?api_key=43ba0a31020fe2244998abeaf52535a4&language=en-US&page=1`
+    ).then(function (similarMovies) {
+      console.log(similarMovies);
 
-        console.log(similarMovies);
-
-      $('.similar-movies').empty();
+      $(".similar-movies").empty();
 
       for (var i = 0; i < similarMovies.results.length; i++) {
         var fullUrl = posterUrl + similarMovies.results[i].poster_path;
@@ -66,5 +81,13 @@ $("#search-button").click(function () {
     });
   });
 });
+
+$(".history-btn").click(function () {});
+
+// let searchHistory = [];
+// searchHistory.push(title);
+//   localStorage.setItem("search history", searchHistory);
+
+function renderPreviousSearches() {}
 
 // http://www.omdbapi.com/?i=tt3896198&apikey=beff67b
