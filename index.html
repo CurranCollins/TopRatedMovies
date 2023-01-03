@@ -38,23 +38,19 @@
           <button id="search-button" class="button float-right">Search</button>
         </div>
       </div>
-      <!--Append .hidden to click event-->
-      <div class="hidden">
-        <div>
-          <h2 style="padding: 30px">Searched Movie:</h2>
-        </div>
+
+      <div>
+        <h2 id="searched-header" style="padding: 30px"></h2>
         <!-- Empty divs for movie searched poster and info and similar results poster and info-->
         <div><img src="" id="movie-poster" /></div>
-        <div></div>
+        <div id="searched-description"></div>
       </div>
 
-      <div class="hidden">
-        <h2 style="padding: 30px">Similar Movies:</h2>
+      <div>
+        <h2 id="similar-header" style="padding: 30px"></h2>
         <div class="similar-movies">
           <!-- img tags appended in script.js -->
         </div>
-        <div></div>
-        <div></div>
       </div>
     </main>
 
