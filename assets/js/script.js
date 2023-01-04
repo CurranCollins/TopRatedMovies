@@ -24,6 +24,7 @@ $("#search-button").click(function () {
   console.log(localStorage);
   title = title.split(" ").join("+");
   // console.log(title);
+  // console.log(title);
 
   // for (let i = 0; i < 8; i++) {
   //   if (searchHistory[i] != undefined) {
