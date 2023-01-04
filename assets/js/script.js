@@ -58,28 +58,15 @@ $("#search-button").click(function () {
         //console.log(fullUrl);
 
         $(".similar-movies").append(`
-        <div class='small reveal' id='info-modal-${i}' data-reveal> 
-          <h1>${similarMovies.results[i].title}</h1> 
+        <div class='modal' id='info-modal-${i}'> 
+          <h3>${similarMovies.results[i].title}</h1> 
           <p>${similarMovies.results[i].overview}</p> 
-          <button class="close-button" data-close aria-label="Close modal" type="button"> <span aria-hidden="true">&times;</span> </button>
+          
         </div>`);
 
-        //$(`#info-modal-${i}`).append(`<h1>${similarMovies.results[i].title}</h1>`);
-
-        //$(`#info-modal-${i}`).append(`<p>${similarMovies.results[i].overview}</p>`);
-
-        //$(`#info-modal-${i}`).append(`<button class="close-button" data-close aria-label="Close modal" type="button"> <span aria-hidden="true">&times;</span> </button>`);
-        let openButton = $(`<button class='button' data-open='info-modal-${i}'><img src='${fullUrl}'/></button>`);
-        openButton.click(function(){
-          var reveal = '#' + $(this).attr('data-open');
-          console.log(reveal);
-          // new Foundation.Reveal(reveal);
-          $(reveal).foundation('open');
-        })
-        $(".similar-movies").append(
-          openButton
-        );
-        $
+        
+        $(".similar-movies").append(`<a href='#info-modal-${i}' rel='modal:open'><img src='${fullUrl}'/></a>`);
+        
       }
     });
   });
