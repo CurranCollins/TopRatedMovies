@@ -5,36 +5,39 @@
 let imdbId = "";
 let posterUrl = "http://image.tmdb.org/t/p/w185";
 let searchHistory = [];
-let title = $("#movie-title").val();
+// let title = $("#movie-title").val();
+
+// function renderPreviousSearches(localStorage) {
+//   for (let i = 0; i < 8; i++);
+//   if (searchHistory[i] != undefined) {
+//     $("#saved-searches").append(
+//       `<button class="button history-btn">${searchHistory[i]}</button>`
+//     );
+//   } else {
+//     $("#saved-searches").removeData(searchHistory);
+//   }
+// }
 
 $("#search-button").click(function () {
   $("#searched-header").text("Searched Movie:");
   $("#similar-header").text("Similar Movies:");
 
   let title = $("#movie-title").val();
-  searchHistory.push(title);
-  localStorage.setItem("search history", searchHistory);
-  console.log(localStorage);
+  // searchHistory.push(title);
+  // localStorage.setItem("search history", searchHistory);
+  // console.log(localStorage);
   title = title.split(" ").join("+");
-  console.log(title);
+  // console.log(title);
 
   $("#saved-searches").empty();
 
   for (let i = 0; i < 8; i++) {
-    // if (searchHistory[i] != undefined) {
-    //   $("#saved-searches").append(
-    //     `<button class="button history-btn">${searchHistory[i]}</button>`
-    //   );
-    // }
-    if (searchHistory[i] == undefined) {
-      $("#saved-searches").removeData();
-    } else if (searchHistory[i] != undefined) {
+    if (searchHistory[i] != undefined) {
       $("#saved-searches").append(
         `<button class="button history-btn">${searchHistory[i]}</button>`
       );
-    } else {
-      $("#saved-searches").empty();
-    }
+    } //else {
+    //$("#saved-searches").removeData(searchHistory);
   }
 
   $.ajax(`http://www.omdbapi.com/?apikey=beff67b&t=${title}`).then(function (
@@ -50,6 +53,9 @@ $("#search-button").click(function () {
       $("#movie-poster").attr("src", "");
     } else {
       // console.log(response);
+      searchHistory.push(response.Title);
+      localStorage.setItem("search history", searchHistory);
+
       $("#movie-poster").attr("src", response.Poster);
       imdbId = response.imdbID;
 
