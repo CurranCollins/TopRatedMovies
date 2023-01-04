@@ -49,83 +49,7 @@ $("#search-button").click(function () {
       $("#movie-poster").attr("src", "");
     } else {
       searchHistory.push(response.Title);
-<<<<<<< HEAD
-      // add search history-btn
-      localStorage.setItem("search history", searchHistory);
-      console.log(localStorage);
-      
-      // console.log(response);
-      $("#movie-poster").attr("src", response.Poster);
-      imdbId = response.imdbID;
-
-      $("#searched-description").empty();
-      $("#searched-description").append(`
-      <p>Title: ${response.Title}</p>
-      <p>Genre(s): ${response.Genre}</p>
-      <p>Director: ${response.Director}</p>
-      <p>Cast: ${response.Actors}</p>
-      <p>Release Date: ${response.Released}</p>
-      <p>Plot: ${response.Plot}</p>
-      `);
-    }
-
-    $.ajax(
-      `https://api.themoviedb.org/3/movie/${imdbId}/similar?api_key=43ba0a31020fe2244998abeaf52535a4&language=en-US&page=1`
-    ).then(function (similarMovies) {
-      console.log(similarMovies);
-
-      $(".similar-movies").empty();
-
-      for (var i = 0; i < similarMovies.results.length; i++) {
-        var fullUrl = posterUrl + similarMovies.results[i].poster_path;
-        //console.log(fullUrl);
-
-        $(".similar-movies").append(`
-        <div class='modal' id='info-modal-${i}'> 
-          <h3>${similarMovies.results[i].title}</h1> 
-          <p>${similarMovies.results[i].overview}</p> 
-          
-        </div>`);
-
-        
-        $(".similar-movies").append(`<a href='#info-modal-${i}' rel='modal:open'><img src='${fullUrl}'/></a>`);
-        
-      }
-    });
-  });
-});
-
-$(".history-btn").click(function () {
-  $("#searched-header").text("Searched Movie:");
-  $("#similar-header").text("Similar Movies:");
-
-  // 
-  let title = this.val();
-  //searchHistory.push(title);
-  //localStorage.setItem("search history", searchHistory);
-  console.log(localStorage);
-  title = title.split(" ").join("+");
-  console.log(title);
-
-  $("#saved-searches").empty();
-
-  $.ajax(`http://www.omdbapi.com/?apikey=beff67b&t=${title}`).then(function (
-    response
-  ) {
-    if (response.Response == "False") {
-      $("#searched-header").text(
-        "Movie not found! Please enter correct title."
-      );
-      $("#similar-header").empty();
-      $("#searched-description").empty();
-      $(".similar-movies").empty();
-      $("#movie-poster").attr("src", "");
-    } else {
-      searchHistory.push(response.Title);
-      localStorage.setItem("search history", searchHistory);
-=======
       localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
->>>>>>> 724e4e48767a80c290814fa1d576fa156daea1d9
       console.log(localStorage);
       $("#saved-searches").append(
         `<button class="button history-btn">${response.Title}</button>`
@@ -173,15 +97,6 @@ $(".history-btn").click(function () {
     });
   });
 });
-<<<<<<< HEAD
-// for (let i = 0; i < 8; i++) {
-//   if (searchHistory[i] != undefined) {
-//     $("#saved-searches").append(
-//       `<button class="button history-btn">${searchHistory[i]}</button>`
-//     );
-//   }
-// }
-=======
 
 //for (let i = 0; i < 8; i++) {
 //if (searchHistory[i] != undefined) {
@@ -256,7 +171,6 @@ $(".history-btn").click(function (event) {
   console.log("click");
   // console.log(button.value);
 });
->>>>>>> 724e4e48767a80c290814fa1d576fa156daea1d9
 
 // let searchHistory = [];
 // searchHistory.push(title);
