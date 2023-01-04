@@ -5,37 +5,31 @@
 let imdbId = "";
 let posterUrl = "http://image.tmdb.org/t/p/w185";
 let searchHistory = [];
-let title = $("#movie-title").val();
+// let title = $("#movie-title").val();
+
+// function renderPreviousSearches(localStorage) {
+//   for (let i = 0; i < 8; i++);
+//   if (searchHistory[i] != undefined) {
+//     $("#saved-searches").append(
+//       `<button class="button history-btn">${searchHistory[i]}</button>`
+//     );
+//   } else {
+//     $("#saved-searches").removeData(searchHistory);
+//   }
+// }
 
 $("#search-button").click(function () {
   $("#searched-header").text("Searched Movie:");
   $("#similar-header").text("Similar Movies:");
 
   let title = $("#movie-title").val();
-  searchHistory.push(title);
-  localStorage.setItem("search history", searchHistory);
+  //searchHistory.push(title);
+  //localStorage.setItem("search history", searchHistory);
   console.log(localStorage);
   title = title.split(" ").join("+");
-  console.log(title);
+  // console.log(title);
 
   $("#saved-searches").empty();
-
-  for (let i = 0; i < 8; i++) {
-    // if (searchHistory[i] != undefined) {
-    //   $("#saved-searches").append(
-    //     `<button class="button history-btn">${searchHistory[i]}</button>`
-    //   );
-    // }
-    if (searchHistory[i] == undefined) {
-      $("#saved-searches").removeData();
-    } else if (searchHistory[i] != undefined) {
-      $("#saved-searches").append(
-        `<button class="button history-btn">${searchHistory[i]}</button>`
-      );
-    } else {
-      $("#saved-searches").empty();
-    }
-  }
 
   $.ajax(`http://www.omdbapi.com/?apikey=beff67b&t=${title}`).then(function (
     response
@@ -49,7 +43,14 @@ $("#search-button").click(function () {
       $(".similar-movies").empty();
       $("#movie-poster").attr("src", "");
     } else {
+      searchHistory.push(response.Title);
+      localStorage.setItem("search history", searchHistory);
+      console.log(localStorage);
+
       // console.log(response);
+      searchHistory.push(response.Title);
+      localStorage.setItem("search history", searchHistory);
+
       $("#movie-poster").attr("src", response.Poster);
       imdbId = response.imdbID;
 
@@ -76,27 +77,29 @@ $("#search-button").click(function () {
         //console.log(fullUrl);
 
         $(".similar-movies").append(`
-        <div class='small reveal' id='info-modal-${i}' data-reveal> 
-          <h1>${similarMovies.results[i].title}</h1> 
+        <div class='modal' id='info-modal-${i}'> 
+          <h3>${similarMovies.results[i].title}</h1> 
           <p>${similarMovies.results[i].overview}</p> 
-          <button class="close-button" data-close aria-label="Close modal" type="button"> <span aria-hidden="true">&times;</span> </button>
+          
         </div>`);
 
-        //$(`#info-modal-${i}`).append(`<h1>${similarMovies.results[i].title}</h1>`);
-
-        //$(`#info-modal-${i}`).append(`<p>${similarMovies.results[i].overview}</p>`);
-
-        //$(`#info-modal-${i}`).append(`<button class="close-button" data-close aria-label="Close modal" type="button"> <span aria-hidden="true">&times;</span> </button>`);
-
         $(".similar-movies").append(
-          `<button class=button data-open='info-modal-${i}'><img src='${fullUrl}'/></button>`
+          `<a href='#info-modal-${i}' rel='modal:open'><img src='${fullUrl}'/></a>`
         );
       }
     });
   });
 });
 
-$(".history-btn").click(function () {});
+//for (let i = 0; i < 8; i++) {
+//if (searchHistory[i] != undefined) {
+//$("#saved-searches").append(
+//`<button class="button history-btn">${searchHistory[i]}</button>`
+//);
+//}
+//}
+
+$(".history-btn").click();
 
 // let searchHistory = [];
 // searchHistory.push(title);
