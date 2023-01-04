@@ -1,22 +1,6 @@
-// Complete Local Stoage button function
-// Modals
-//
-
 let imdbId = "";
 let posterUrl = "http://image.tmdb.org/t/p/w185";
 let searchHistory = [];
-// let title = $("#movie-title").val();
-
-// function renderPreviousSearches(localStorage) {
-//   for (let i = 0; i < 8; i++);
-//   if (searchHistory[i] != undefined) {
-//     $("#saved-searches").append(
-//       `<button class="button history-btn">${searchHistory[i]}</button>`
-//     );
-//   } else {
-//     $("#saved-searches").removeData(searchHistory);
-//   }
-// }
 
 $("#search-button").click(function () {
   $("#searched-header").text("Searched Movie:");
