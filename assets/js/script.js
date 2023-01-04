@@ -72,13 +72,13 @@ $("#search-button").click(function () {
   });
 });
 
-//for (let i = 0; i < 8; i++) {
-  //if (searchHistory[i] != undefined) {
-    //$("#saved-searches").append(
-      //`<button class="button history-btn">${searchHistory[i]}</button>`
-    //);
-  //}
-//}
+// for (let i = 0; i < 8; i++) {
+//   if (searchHistory[i] != undefined) {
+//     $("#saved-searches").append(
+//       `<button class="button history-btn">${searchHistory[i]}</button>`
+//     );
+//   }
+// }
 
 $(".history-btn").click();
 
