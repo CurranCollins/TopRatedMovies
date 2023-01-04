@@ -1,6 +1,11 @@
+// Complete Local Stoage button function
+// Modals
+//
+
 let imdbId = "";
 let posterUrl = "http://image.tmdb.org/t/p/w185";
 let searchHistory = [];
+let title = $("#movie-title").val();
 
 $("#search-button").click(function () {
   $("#searched-header").text("Searched Movie:");
@@ -16,10 +21,19 @@ $("#search-button").click(function () {
   $("#saved-searches").empty();
 
   for (let i = 0; i < 8; i++) {
-    if (searchHistory[i] != undefined) {
+    // if (searchHistory[i] != undefined) {
+    //   $("#saved-searches").append(
+    //     `<button class="button history-btn">${searchHistory[i]}</button>`
+    //   );
+    // }
+    if (searchHistory[i] == undefined) {
+      $("#saved-searches").removeData();
+    } else if (searchHistory[i] != undefined) {
       $("#saved-searches").append(
         `<button class="button history-btn">${searchHistory[i]}</button>`
       );
+    } else {
+      $("#saved-searches").empty();
     }
   }
 
