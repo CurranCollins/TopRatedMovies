@@ -42,7 +42,7 @@ $("#search-button").click(function () {
         while (searchHistory.length > 8) {
           searchHistory.shift();
         }
-
+        // sets the length of search history and enables it to unpopulate old seaches
         for (let i = 0; i < searchHistory.length; i++) {
           $("#saved-searches").prepend(
             `<button class="button history-btn">${searchHistory[i]}</button>`
@@ -135,7 +135,7 @@ $("#saved-searches").on("click", ".history-btn", function (event) {
 
         $(".similar-movies").append(`
         <div class='modal' id='info-modal-${i}'> 
-          <h3>${similarMovies.results[i].title}</h1> 
+          <h3>${similarMovies.results[i].title}</h3> 
           <p>${similarMovies.results[i].overview}</p> 
           
         </div>`);
