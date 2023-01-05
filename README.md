@@ -24,11 +24,6 @@ In order to get this webpage running we needed to link jquerey, foundation, and 
 
 When you search a movie on the webpage that movies poster will pop up with the info for that movie and underneath that info 20 movies similar to that movie will appear. A button linking to the search will be created apon searching. each of the posters for the similar movies is also a clickable modal and it will pop up a description of the move when clicked on.
 
-active webpage link:
-https://currancollins.github.io/TopRatedMovies/
-
-![Webpage Image](assets/images/Screenshot.png)
-
 ## Credits
 
 Gene Kim
