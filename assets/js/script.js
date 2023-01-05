@@ -47,10 +47,10 @@ $("#search-button").click(function () {
           $("#saved-searches").prepend(
             `<button class="button history-btn">${searchHistory[i]}</button>`
           );
-
-          localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-          console.log(localStorage);
         }
+
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+        console.log(localStorage);
       }
 
       // console.log(response);
@@ -95,7 +95,7 @@ $("#search-button").click(function () {
   });
 });
 
-$(".history-btn").click(function (event) {
+$("#saved-searches").on('click', '.history-btn', function (event) {
   $.ajax(
     `http://www.omdbapi.com/?apikey=beff67b&t=${event.target.innerHTML}`
   ).then(function (response) {
@@ -108,7 +108,6 @@ $(".history-btn").click(function (event) {
       $(".similar-movies").empty();
       $("#movie-poster").attr("src", "");
     } else {
-
       $("#movie-poster").attr("src", response.Poster);
       imdbId = response.imdbID;
 
