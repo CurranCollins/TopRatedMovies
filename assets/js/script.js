@@ -36,12 +36,14 @@ $("#search-button").click(function () {
       $(".similar-movies").empty();
       $("#movie-poster").attr("src", "");
     } else {
-      searchHistory.push(response.Title);
-      localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-      console.log(localStorage);
-      $("#saved-searches").append(
-        `<button class="button history-btn">${response.Title}</button>`
-      );
+      if (!searchHistory.includes(response.Title)) {
+        searchHistory.push(response.Title);
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+        console.log(localStorage);
+        $("#saved-searches").prepend(
+          `<button class="button history-btn">${response.Title}</button>`
+        );
+      }
       // console.log(response);
 
       $("#movie-poster").attr("src", response.Poster);
@@ -97,12 +99,6 @@ $(".history-btn").click(function (event) {
       $(".similar-movies").empty();
       $("#movie-poster").attr("src", "");
     } else {
-      searchHistory.push(response.Title);
-      localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-      console.log(localStorage);
-      $("#saved-searches").append(
-        `<button class="button history-btn">${response.Title}</button>`
-      );
 
       $("#movie-poster").attr("src", response.Poster);
       imdbId = response.imdbID;
