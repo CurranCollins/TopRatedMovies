@@ -8,7 +8,7 @@ if (searchHistory == null) {
 console.log(searchHistory);
 for (let i = 0; i < 8; i++) {
   if (searchHistory[i] != undefined) {
-    $("#saved-searches").append(
+    $("#saved-searches").prepend(
       `<button class="button history-btn">${searchHistory[i]}</button>`
     );
   }
@@ -38,12 +38,21 @@ $("#search-button").click(function () {
     } else {
       if (!searchHistory.includes(response.Title)) {
         searchHistory.push(response.Title);
-        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-        console.log(localStorage);
-        $("#saved-searches").prepend(
-          `<button class="button history-btn">${response.Title}</button>`
-        );
+        $("#saved-searches").empty();
+        while (searchHistory.length > 8) {
+          searchHistory.shift();
+        }
+
+        for(let i = 0; i < searchHistory.length; i++) {
+          $("#saved-searches").prepend(
+            `<button class="button history-btn">${searchHistory[i]}</button>`
+          );
+
+          localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+          console.log(localStorage);
+        }
       }
+
       // console.log(response);
 
       $("#movie-poster").attr("src", response.Poster);
