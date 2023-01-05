@@ -23,18 +23,6 @@ $("#search-button").click(function () {
   //localStorage.setItem("search history", searchHistory);
   console.log(localStorage);
   title = title.split(" ").join("+");
-  // console.log(title);
-  // console.log(title);
-
-  // for (let i = 0; i < 8; i++) {
-  //   if (searchHistory[i] != undefined) {
-  //     $("#saved-searches").append(
-  //       `<button class="button history-btn">${searchHistory[i]}</button>`
-  //     );
-  //   }
-  // }
-
-  // $("#saved-searches").empty();
 
   $.ajax(`http://www.omdbapi.com/?apikey=beff67b&t=${title}`).then(function (
     response
@@ -55,8 +43,6 @@ $("#search-button").click(function () {
         `<button class="button history-btn">${response.Title}</button>`
       );
       // console.log(response);
-      // searchHistory.push(response.Title);
-      // localStorage.setItem("search history", searchHistory);
 
       $("#movie-poster").attr("src", response.Poster);
       imdbId = response.imdbID;
@@ -98,14 +84,6 @@ $("#search-button").click(function () {
   });
 });
 
-//for (let i = 0; i < 8; i++) {
-//if (searchHistory[i] != undefined) {
-//$("#saved-searches").append(
-//`<button class="button history-btn">${searchHistory[i]}</button>`
-//);
-//}
-//}
-
 $(".history-btn").click(function (event) {
   $.ajax(
     `http://www.omdbapi.com/?apikey=beff67b&t=${event.target.innerHTML}`
@@ -125,9 +103,6 @@ $(".history-btn").click(function (event) {
       $("#saved-searches").append(
         `<button class="button history-btn">${response.Title}</button>`
       );
-      // console.log(response);
-      // searchHistory.push(response.Title);
-      // localStorage.setItem("search history", searchHistory);
 
       $("#movie-poster").attr("src", response.Poster);
       imdbId = response.imdbID;
