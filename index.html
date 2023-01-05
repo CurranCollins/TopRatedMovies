@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Find similar Movies</title>
   </head>
-  <body>
+  <body style="background-color: lightgrey; color: black">
     <header
       class="grid-x"
       style="justify-content: center; padding: 20px; margin-bottom: 50px"
@@ -57,13 +57,22 @@
       <div class="row">
         <h2 class="column" id="searched-header" style="padding: 30px"></h2>
         <!-- Empty divs for movie searched poster and info and similar results poster and info-->
-        <div class="column"><img src="" id="movie-poster" /></div>
-        <div class="column" id="searched-description"></div>
+        <div class="column" style="justify-content: space-around">
+          <img src="" id="movie-poster" />
+        </div>
+        <div
+          class="column"
+          id="searched-description"
+          style="font-size: medium"
+        ></div>
       </div>
 
       <div>
         <h2 id="similar-header" style="padding: 30px"></h2>
-        <div class="similar-movies">
+        <div
+          class="similar-movies grid-x grid-padding-x"
+          style="justify-content: space-evenly"
+        >
           <!-- img tags appended in script.js -->
         </div>
       </div>
