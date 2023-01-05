@@ -1,5 +1,5 @@
 let imdbId = "";
-let posterUrl = "http://image.tmdb.org/t/p/w185";
+let posterUrl = "https://image.tmdb.org/t/p/w185";
 let searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
 
 if (searchHistory == null) {
