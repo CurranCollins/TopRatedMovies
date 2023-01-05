@@ -24,7 +24,7 @@ $("#search-button").click(function () {
   console.log(localStorage);
   title = title.split(" ").join("+");
 
-  $.ajax(`http://www.omdbapi.com/?apikey=beff67b&t=${title}`).then(function (
+  $.ajax(`https://www.omdbapi.com/?apikey=beff67b&t=${title}`).then(function (
     response
   ) {
     if (response.Response == "False") {
@@ -97,7 +97,7 @@ $("#search-button").click(function () {
 
 $("#saved-searches").on("click", ".history-btn", function (event) {
   $.ajax(
-    `http://www.omdbapi.com/?apikey=beff67b&t=${event.target.innerHTML}`
+    `https://www.omdbapi.com/?apikey=beff67b&t=${event.target.innerHTML}`
   ).then(function (response) {
     if (response.Response == "False") {
       $("#searched-header").text(
